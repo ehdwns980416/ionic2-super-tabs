@@ -517,7 +517,7 @@ export class SuperTabs implements OnInit, AfterContentInit, AfterViewInit, OnDes
       this.refreshTabStates();
 
       activeView = this.getActiveTab().getActive();
-      
+
       if (activeView) {
         activeView._willEnter();
         activeView._didEnter();
@@ -544,14 +544,7 @@ export class SuperTabs implements OnInit, AfterContentInit, AfterViewInit, OnDes
     }
     this.alignIndicatorPosition(true);
   }
-  
-  private refreshTabStates() {
-    return Promise.all(this._tabs.map((tab, i) => {
-      tab.setActive(i === this.selectedTabIndex);
-      return tab.load(Math.abs(this.selectedTabIndex - i) < 2);
-    }));
-  }
-  
+
   private refreshTabStates() {
     this._tabs.forEach((tab, i) => {
       tab.setActive(i === this.selectedTabIndex);
